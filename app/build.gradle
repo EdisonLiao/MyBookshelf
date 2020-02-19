@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.greenrobot.greendao'
-apply plugin: 'io.fabric'
 apply plugin: "de.timfreiheit.resourceplaceholders"
 
 static def releaseTime() {
@@ -47,7 +46,7 @@ android {
         }
         debug {
             signingConfig signingConfigs.myConfig
-            applicationIdSuffix '.debug'
+            applicationIdSuffix 'debug'
             versionNameSuffix 'debug'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -150,11 +149,10 @@ dependencies {
 
 greendao {
     schemaVersion 64
-    daoPackage 'com.kunfei.bookshelf.dao'
+    daoPackage 'com.duyin.bookshelf.dao'
     targetGenDir 'src/main/java'
 }
 
-apply plugin: 'com.google.gms.google-services'
 repositories {
     mavenCentral()
 }

@@ -1,4 +1,4 @@
-package com.kunfei.bookshelf;
+package com.duyin.bookshelf;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
