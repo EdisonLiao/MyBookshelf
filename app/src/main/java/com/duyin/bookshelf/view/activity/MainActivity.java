@@ -74,10 +74,6 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
     private final int requestSource = 14;
     private String[] mTitles;
 
-    @BindView(R.id.drawer)
-    DrawerLayout drawer;
-    @BindView(R.id.navigation_view)
-    NavigationView navigationView;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.main_view)
@@ -85,9 +81,7 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
     @BindView(R.id.card_search)
     CardView cardSearch;
 
-    private AppCompatImageView vwNightTheme;
     private int group;
-    private ActionBarDrawerToggle mDrawerToggle;
     private MoDialogHUD moDialogHUD;
     private long exitTime = 0;
     private boolean resumed = false;
@@ -204,9 +198,7 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
     protected void bindView() {
         super.bindView();
         setSupportActionBar(toolbar);
-        setupActionBar();
         cardSearch.setCardBackgroundColor(ThemeStore.primaryColorDark(this));
-        initDrawer();
         initTabLayout();
         upGroup(group);
         moDialogHUD = new MoDialogHUD(this);
@@ -390,117 +382,6 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
         }
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // 这个必须要，没有的话进去的默认是个箭头。。正常应该是三横杠的
-        mDrawerToggle.syncState();
-        if (vwNightTheme != null) {
-            upThemeVw();
-        }
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    // 添加菜单
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    /**
-     * 菜单事件
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.action_add_local:
-                new PermissionsCompat.Builder(this)
-                        .addPermissions(Permissions.READ_EXTERNAL_STORAGE, Permissions.WRITE_EXTERNAL_STORAGE)
-                        .rationale(R.string.import_per)
-                        .onGranted((requestCode) -> {
-                            startActivity(new Intent(MainActivity.this, ImportBookActivity.class));
-                            return Unit.INSTANCE;
-                        })
-                        .request();
-                break;
-            case R.id.action_add_url:
-                InputDialog.builder(this)
-                        .setTitle(getString(R.string.add_book_url))
-                        .setCallback(new InputDialog.Callback() {
-                            @Override
-                            public void setInputText(String inputText) {
-                                inputText = StringUtils.trim(inputText);
-                                mPresenter.addBookUrl(inputText);
-                            }
-
-                            @Override
-                            public void delete(String value) {
-
-                            }
-                        }).show();
-                break;
-            case R.id.action_download_all:
-                if (!isNetWorkAvailable()) {
-                    toast(R.string.network_connection_unavailable);
-                } else {
-                    RxBus.get().post(RxBusTag.DOWNLOAD_ALL, 10000);
-                }
-                break;
-            case R.id.menu_bookshelf_layout:
-                selectBookshelfLayout();
-                break;
-            case R.id.action_arrange_bookshelf:
-                if (getBookListFragment() != null) {
-                    getBookListFragment().setArrange(true);
-                }
-                break;
-            case R.id.action_web_start:
-                boolean startedThisTime = WebService.startThis(this);
-                if (!startedThisTime) {
-                    toast(getString(R.string.web_service_already_started_hint));
-                }
-                break;
-            case android.R.id.home:
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawers();
-                } else {
-                    drawer.openDrawer(GravityCompat.START, !MApplication.isEInkMode);
-                }
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    //设置ToolBar
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    //初始化侧边栏
-    private void initDrawer() {
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawerToggle.syncState();
-        drawer.addDrawerListener(mDrawerToggle);
-
-        setUpNavigationView();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-
-    }
-
     private void upGroup(int group) {
         if (this.group != group) {
             SharedPreferences.Editor editor = preferences.edit();
@@ -512,70 +393,6 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
         RxBus.get().post(RxBusTag.REFRESH_BOOK_LIST, false);
         //更换Tab文字
         updateTabItemText(group);
-    }
-
-    /**
-     * 侧边栏按钮
-     */
-    private void setUpNavigationView() {
-        navigationView.setBackgroundColor(ThemeStore.backgroundColor(this));
-        NavigationViewUtil.setItemIconColors(navigationView, getResources().getColor(R.color.tv_text_default), ThemeStore.accentColor(this));
-        NavigationViewUtil.disableScrollbar(navigationView);
-        @SuppressLint("InflateParams") View headerView = LayoutInflater.from(this).inflate(R.layout.navigation_header, null);
-        AppCompatImageView imageView = headerView.findViewById(R.id.iv_read);
-        imageView.setColorFilter(ThemeStore.accentColor(this));
-        navigationView.addHeaderView(headerView);
-        Menu drawerMenu = navigationView.getMenu();
-        vwNightTheme = drawerMenu.findItem(R.id.action_theme).getActionView().findViewById(R.id.iv_theme_day_night);
-        upThemeVw();
-        vwNightTheme.setOnClickListener(view -> setNightTheme(!isNightTheme()));
-        navigationView.setNavigationItemSelectedListener(menuItem -> {
-            drawer.closeDrawer(GravityCompat.START, !MApplication.isEInkMode);
-            switch (menuItem.getItemId()) {
-                case R.id.action_book_source_manage:
-                    handler.postDelayed(() -> BookSourceActivity.startThis(this, requestSource), 200);
-                    break;
-                case R.id.action_replace_rule:
-                    handler.postDelayed(() -> ReplaceRuleActivity.startThis(this, null), 200);
-                    break;
-                case R.id.action_download:
-                    handler.postDelayed(() -> DownloadActivity.startThis(this), 200);
-                    break;
-                case R.id.action_setting:
-                    handler.postDelayed(() -> SettingActivity.startThis(this), 200);
-                    break;
-                case R.id.action_about:
-                    handler.postDelayed(() -> AboutActivity.startThis(this), 200);
-                    break;
-                case R.id.action_donate:
-                    handler.postDelayed(() -> DonateActivity.startThis(this), 200);
-                    break;
-                case R.id.action_backup:
-                    handler.postDelayed(() -> BackupRestoreUi.INSTANCE.backup(this), 200);
-                    break;
-                case R.id.action_restore:
-                    handler.postDelayed(() -> BackupRestoreUi.INSTANCE.restore(this), 200);
-                    break;
-                case R.id.action_theme:
-                    handler.postDelayed(() -> ThemeSettingActivity.startThis(this), 200);
-                    break;
-            }
-            return true;
-        });
-    }
-
-    /**
-     * 更新主题切换按钮
-     */
-    private void upThemeVw() {
-        if (isNightTheme()) {
-            vwNightTheme.setImageResource(R.drawable.ic_daytime);
-            vwNightTheme.setContentDescription(getString(R.string.click_to_day));
-        } else {
-            vwNightTheme.setImageResource(R.drawable.ic_brightness);
-            vwNightTheme.setContentDescription(getString(R.string.click_to_night));
-        }
-        vwNightTheme.getDrawable().mutate().setColorFilter(ThemeStore.accentColor(this), PorterDuff.Mode.SRC_ATOP);
     }
 
     private void selectBookshelfLayout() {
@@ -596,8 +413,6 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
             preferences.edit()
                     .putInt("versionCode", MApplication.getVersionCode())
                     .apply();
-            //更新日志
-            moDialogHUD.showAssetMarkdown("updateLog.md");
         }
     }
 
@@ -640,10 +455,6 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
             return true;
         } else {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START, !MApplication.isEInkMode);
-                    return true;
-                }
                 exit();
                 return true;
             }
