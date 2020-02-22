@@ -159,7 +159,7 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
 
     @Override
     protected void initData() {
-        mTitles = new String[]{getString(R.string.bookshelf), getString(R.string.find)};
+        mTitles = new String[]{getString(R.string.find),getString(R.string.bookshelf)};
     }
 
     @Override
@@ -192,7 +192,7 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
             bookListFragment = new BookListFragment();
         if (findBookFragment == null)
             findBookFragment = new FindBookFragment();
-        return Arrays.asList(bookListFragment, findBookFragment);
+        return Arrays.asList(findBookFragment,bookListFragment);
     }
 
     @Override
@@ -355,7 +355,7 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
         View customView = tab.getCustomView();
         if (customView == null) return;
         TextView tv = customView.findViewById(R.id.tabtext);
-        tv.setText(getResources().getStringArray(R.array.book_group_array)[group]);
+        tv.setText(getString(R.string.recommend));
         tab.setContentDescription(String.format("%s,%s", tv.getText(), getString(R.string.click_on_selected_show_menu)));
     }
 
@@ -376,7 +376,7 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
 
     public BookListFragment getBookListFragment() {
         try {
-            return (BookListFragment) mFragmentList.get(0);
+            return (BookListFragment) mFragmentList.get(1);
         } catch (Exception e) {
             return null;
         }
@@ -384,7 +384,7 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
 
     public FindBookFragment getFindFragment() {
         try {
-            return (FindBookFragment) mFragmentList.get(1);
+            return (FindBookFragment) mFragmentList.get(0);
         } catch (Exception e) {
             return null;
         }
@@ -512,7 +512,6 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
         RxBus.get().post(RxBusTag.REFRESH_BOOK_LIST, false);
         //更换Tab文字
         updateTabItemText(group);
-
     }
 
     /**

@@ -177,20 +177,20 @@ public class BookSourceManager {
             string = String.format("http://%s:65501", string);
         }
         if (StringUtils.isJsonType(string)) {
-            return importBookSourceFromJson(string.trim())
+            return importBookSourceFromJsonObser(string.trim())
                     .compose(RxUtils::toSimpleSingle);
         }
         if (NetworkUtils.isUrl(string)) {
             return BaseModelImpl.getInstance().getRetrofitString(StringUtils.getBaseUrl(string), "utf-8")
                     .create(IHttpGetApi.class)
                     .get(string, AnalyzeHeaders.getMap(null))
-                    .flatMap(rsp -> importBookSourceFromJson(rsp.body()))
+                    .flatMap(rsp -> importBookSourceFromJsonObser(rsp.body()))
                     .compose(RxUtils::toSimpleSingle);
         }
         return Observable.error(new Exception("不是Json或Url格式"));
     }
 
-    private static Observable<List<BookSourceBean>> importBookSourceFromJson(String json) {
+    private static Observable<List<BookSourceBean>> importBookSourceFromJsonObser(String json) {
         return Observable.create(e -> {
             List<BookSourceBean> bookSourceBeans = new ArrayList<>();
             if (StringUtils.isJsonArray(json)) {
@@ -232,6 +232,46 @@ public class BookSourceManager {
             }
             e.onError(new Throwable("格式不对"));
         });
+    }
+
+    public static void importBookSourceFromJson(String json){
+        List<BookSourceBean> bookSourceBeans = new ArrayList<>();
+        if (StringUtils.isJsonArray(json)) {
+            try {
+                bookSourceBeans = GsonUtils.parseJArray(json, BookSourceBean.class);
+                for (BookSourceBean bookSourceBean : bookSourceBeans) {
+                    if (bookSourceBean.containsGroup("删除")) {
+                        DbHelper.getDaoSession().getBookSourceBeanDao().queryBuilder()
+                                .where(BookSourceBeanDao.Properties.BookSourceUrl.eq(bookSourceBean.getBookSourceUrl()))
+                                .buildDelete().executeDeleteWithoutDetachingEntities();
+                    } else {
+                        try {
+                            new URL(bookSourceBean.getBookSourceUrl());
+                            bookSourceBean.setSerialNumber(0);
+                            addBookSource(bookSourceBean);
+                        } catch (Exception exception) {
+                            DbHelper.getDaoSession().getBookSourceBeanDao().queryBuilder()
+                                    .where(BookSourceBeanDao.Properties.BookSourceUrl.eq(bookSourceBean.getBookSourceUrl()))
+                                    .buildDelete().executeDeleteWithoutDetachingEntities();
+                        }
+                    }
+                }
+                return;
+            } catch (Exception ignored) {
+            }
+        }
+
+        if (StringUtils.isJsonObject(json)) {
+            try {
+                BookSourceBean bookSourceBean = GsonUtils.parseJObject(json, BookSourceBean.class);
+                addBookSource(bookSourceBean);
+                bookSourceBeans.add(bookSourceBean);
+
+                return;
+            } catch (Exception ignored) {
+
+            }
+        }
     }
 
 }
