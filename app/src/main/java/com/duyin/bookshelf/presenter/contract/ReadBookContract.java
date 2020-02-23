@@ -3,8 +3,8 @@ package com.duyin.bookshelf.presenter.contract;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.kunfei.basemvplib.impl.IPresenter;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IView;
 import com.duyin.bookshelf.bean.BookChapterBean;
 import com.duyin.bookshelf.bean.BookShelfBean;
 import com.duyin.bookshelf.bean.BookSourceBean;

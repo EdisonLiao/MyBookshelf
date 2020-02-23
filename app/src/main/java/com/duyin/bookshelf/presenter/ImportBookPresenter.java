@@ -1,8 +1,8 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
+
 package com.duyin.bookshelf.presenter;
 
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.BasePresenterImpl;
+import com.edison.mvplib.BasePresenterImpl;
 import com.duyin.bookshelf.bean.LocBookShelfBean;
 import com.duyin.bookshelf.constant.RxBusTag;
 import com.duyin.bookshelf.model.ImportBookModel;

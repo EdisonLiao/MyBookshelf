@@ -1,4 +1,4 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
+
 package com.duyin.bookshelf.view.activity;
 
 import android.annotation.SuppressLint;
@@ -12,7 +12,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.kunfei.basemvplib.BitIntentDataManager;
+import com.edison.mvplib.BitIntentDataManager;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;
 import com.duyin.bookshelf.bean.SearchBookBean;

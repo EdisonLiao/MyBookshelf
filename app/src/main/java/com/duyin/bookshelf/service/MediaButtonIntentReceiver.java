@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.KeyEvent;
 
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.AppActivityManager;
+import com.edison.mvplib.AppActivityManager;
 import com.duyin.bookshelf.constant.RxBusTag;
 import com.duyin.bookshelf.presenter.ReadBookPresenter;
 import com.duyin.bookshelf.view.activity.ReadBookActivity;

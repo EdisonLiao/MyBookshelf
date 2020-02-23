@@ -1,4 +1,4 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
+
 package com.duyin.bookshelf.base;
 
 import android.annotation.SuppressLint;
@@ -18,8 +18,8 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.BaseActivity;
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.BaseActivity;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.MApplication;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.constant.RxBusTag;

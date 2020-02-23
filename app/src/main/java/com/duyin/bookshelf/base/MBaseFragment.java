@@ -9,9 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.kunfei.basemvplib.BaseFragment;
-import com.kunfei.basemvplib.impl.IPresenter;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.BaseFragment;
+import com.edison.mvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IView;
 import com.duyin.bookshelf.MApplication;
 
 public abstract class MBaseFragment<T extends IPresenter> extends BaseFragment<T> implements IView {

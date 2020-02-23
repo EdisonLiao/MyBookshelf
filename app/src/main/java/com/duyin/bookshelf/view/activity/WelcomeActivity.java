@@ -1,4 +1,4 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
+
 package com.duyin.bookshelf.view.activity;
 
 import android.animation.Animator;
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.DbHelper;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;

@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.BitIntentDataManager;
+import com.edison.mvplib.BitIntentDataManager;
 import com.duyin.bookshelf.MApplication;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.bean.BookSourceBean;

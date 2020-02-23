@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;
 import com.duyin.bookshelf.help.permission.Permissions;

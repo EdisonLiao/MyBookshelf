@@ -1,4 +1,4 @@
-package com.kunfei.basemvplib;
+package com.edison.mvplib;
 
 import android.app.Activity;
 

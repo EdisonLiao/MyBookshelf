@@ -1,5 +1,5 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
-package com.kunfei.basemvplib;
+
+package com.edison.mvplib;
 
 import java.util.HashMap;
 import java.util.Map;

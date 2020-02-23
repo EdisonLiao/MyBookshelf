@@ -1,8 +1,8 @@
 package com.duyin.bookshelf.presenter.contract;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.kunfei.basemvplib.impl.IPresenter;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IView;
 import com.duyin.bookshelf.bean.TxtChapterRuleBean;
 
 import java.util.List;

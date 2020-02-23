@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
-import com.kunfei.basemvplib.BasePresenterImpl;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.BasePresenterImpl;
+import com.edison.mvplib.impl.IView;
 import com.duyin.bookshelf.DbHelper;
 import com.duyin.bookshelf.bean.BookSourceBean;
 import com.duyin.bookshelf.model.BookSourceManager;

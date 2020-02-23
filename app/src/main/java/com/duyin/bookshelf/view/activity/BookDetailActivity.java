@@ -1,4 +1,4 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
+
 package com.duyin.bookshelf.view.activity;
 
 import android.annotation.SuppressLint;
@@ -25,8 +25,8 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.AppActivityManager;
-import com.kunfei.basemvplib.BitIntentDataManager;
+import com.edison.mvplib.AppActivityManager;
+import com.edison.mvplib.BitIntentDataManager;
 import com.duyin.bookshelf.DbHelper;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;

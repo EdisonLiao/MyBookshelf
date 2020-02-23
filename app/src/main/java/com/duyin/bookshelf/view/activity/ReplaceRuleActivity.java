@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.BitIntentDataManager;
+import com.edison.mvplib.BitIntentDataManager;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;
 import com.duyin.bookshelf.base.observer.MySingleObserver;

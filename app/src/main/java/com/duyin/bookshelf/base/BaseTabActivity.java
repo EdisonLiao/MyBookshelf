@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.R;
 
 import java.util.List;

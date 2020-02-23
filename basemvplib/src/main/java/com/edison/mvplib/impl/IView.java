@@ -1,4 +1,4 @@
-package com.kunfei.basemvplib.impl;
+package com.edison.mvplib.impl;
 
 import android.content.Context;
 

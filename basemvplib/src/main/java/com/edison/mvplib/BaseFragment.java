@@ -1,4 +1,4 @@
-package com.kunfei.basemvplib;
+package com.edison.mvplib;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -12,12 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.kunfei.basemvplib.impl.IPresenter;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IView;
 
 import java.util.Objects;
 
-import static com.kunfei.basemvplib.BaseActivity.START_SHEAR_ELE;
+import static com.edison.mvplib.BaseActivity.START_SHEAR_ELE;
 
 public abstract class BaseFragment<T extends IPresenter> extends Fragment implements IView {
     protected View view;

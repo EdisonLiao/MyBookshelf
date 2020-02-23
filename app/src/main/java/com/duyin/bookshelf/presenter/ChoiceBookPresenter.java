@@ -1,4 +1,4 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
+
 package com.duyin.bookshelf.presenter;
 
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.BasePresenterImpl;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.BasePresenterImpl;
+import com.edison.mvplib.impl.IView;
 import com.duyin.bookshelf.DbHelper;
 import com.duyin.bookshelf.bean.BookShelfBean;
 import com.duyin.bookshelf.bean.SearchBookBean;

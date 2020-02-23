@@ -30,7 +30,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.hwangjr.rxbus.RxBus;
 import com.jaredrummler.android.colorpicker.ColorPickerDialog;
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener;
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;
 import com.duyin.bookshelf.constant.RxBusTag;

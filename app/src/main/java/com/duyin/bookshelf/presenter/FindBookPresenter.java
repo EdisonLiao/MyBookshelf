@@ -1,4 +1,4 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
+
 package com.duyin.bookshelf.presenter;
 
 import android.text.TextUtils;
@@ -8,8 +8,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.duyin.bookshelf.utils.ReadAssets;
-import com.kunfei.basemvplib.BasePresenterImpl;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.BasePresenterImpl;
+import com.edison.mvplib.impl.IView;
 import com.duyin.bookshelf.MApplication;
 import com.duyin.bookshelf.bean.BookSourceBean;
 import com.duyin.bookshelf.bean.FindKindBean;

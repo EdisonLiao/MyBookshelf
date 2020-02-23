@@ -1,7 +1,7 @@
 package com.duyin.bookshelf.presenter.contract;
 
-import com.kunfei.basemvplib.impl.IPresenter;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IView;
 
 public interface MainContract {
 

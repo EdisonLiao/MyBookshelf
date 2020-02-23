@@ -15,7 +15,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.MApplication;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;

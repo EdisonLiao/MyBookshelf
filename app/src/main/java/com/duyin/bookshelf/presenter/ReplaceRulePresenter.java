@@ -6,7 +6,7 @@ import androidx.documentfile.provider.DocumentFile;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.BasePresenterImpl;
+import com.edison.mvplib.BasePresenterImpl;
 import com.duyin.bookshelf.base.observer.MyObserver;
 import com.duyin.bookshelf.base.observer.MySingleObserver;
 import com.duyin.bookshelf.bean.ReplaceRuleBean;

@@ -13,8 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.hwangjr.rxbus.RxBus;
-import com.kunfei.basemvplib.BitIntentDataManager;
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.BitIntentDataManager;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.BaseTabActivity;
 import com.duyin.bookshelf.base.MBaseActivity;

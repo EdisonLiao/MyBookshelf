@@ -18,8 +18,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.kunfei.basemvplib.BitIntentDataManager;
-import com.kunfei.basemvplib.impl.IPresenter;
+import com.edison.mvplib.BitIntentDataManager;
+import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.DbHelper;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;

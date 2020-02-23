@@ -35,7 +35,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.kunfei.basemvplib.BitIntentDataManager;
+import com.edison.mvplib.BitIntentDataManager;
 import com.duyin.bookshelf.BuildConfig;
 import com.duyin.bookshelf.R;
 import com.duyin.bookshelf.base.MBaseActivity;

@@ -1,4 +1,4 @@
-package com.kunfei.basemvplib;
+package com.edison.mvplib;
 
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -9,9 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kunfei.basemvplib.impl.IPresenter;
-import com.kunfei.basemvplib.impl.IView;
-import com.monke.basemvplib.R;
+import com.edison.mvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

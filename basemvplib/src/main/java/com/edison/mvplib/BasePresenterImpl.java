@@ -1,7 +1,7 @@
-package com.kunfei.basemvplib;
+package com.edison.mvplib;
 
-import com.kunfei.basemvplib.impl.IPresenter;
-import com.kunfei.basemvplib.impl.IView;
+import com.edison.mvplib.impl.IPresenter;
+import com.edison.mvplib.impl.IView;
 
 import androidx.annotation.NonNull;
 
