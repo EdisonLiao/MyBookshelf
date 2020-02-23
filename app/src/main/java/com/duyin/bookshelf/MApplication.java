@@ -15,6 +15,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDex;
 
+import com.bytedance.sdk.openadsdk.TTAdConfig;
+import com.bytedance.sdk.openadsdk.TTAdConstant;
+import com.bytedance.sdk.openadsdk.TTAdSdk;
 import com.duyin.bookshelf.constant.AppConstant;
 import com.duyin.bookshelf.help.AppFrontBackHelper;
 import com.duyin.bookshelf.help.CrashHandler;
