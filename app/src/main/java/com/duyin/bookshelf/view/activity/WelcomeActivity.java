@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
+import com.duyin.bookshelf.MApplication;
+import com.duyin.bookshelf.widget.modialog.DisclaimerDialog;
 import com.edison.mvplib.impl.IPresenter;
 import com.duyin.bookshelf.DbHelper;
 import com.duyin.bookshelf.R;
@@ -21,6 +23,10 @@ public class WelcomeActivity extends MBaseActivity {
 
     @BindView(R.id.iv_bg)
     ImageView ivBg;
+
+    private DisclaimerDialog mDisclaimerDialog;
+
+    private static final String KEY_DISCLAIMER = "key_disclaimer";
 
     @Override
     protected IPresenter initInjector() {
@@ -37,6 +43,7 @@ public class WelcomeActivity extends MBaseActivity {
         setContentView(R.layout.activity_welcome);
         AsyncTask.execute(DbHelper::getDaoSession);
         ButterKnife.bind(this);
+        initDisclaimerDialog();
         ivBg.setColorFilter(ThemeStore.accentColor(this));
         ValueAnimator welAnimator = ValueAnimator.ofFloat(1f, 0f).setDuration(800);
         welAnimator.setStartDelay(500);
@@ -47,12 +54,17 @@ public class WelcomeActivity extends MBaseActivity {
         welAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                if (preferences.getBoolean(getString(R.string.pk_default_read), false)) {
-                    startReadActivity();
-                } else {
-                    startBookshelfActivity();
+
+                if (mDisclaimerDialog != null){
+                    mDisclaimerDialog.show();
+                }else {
+                    if (preferences.getBoolean(getString(R.string.pk_default_read), false)) {
+                        startReadActivity();
+                    } else {
+                        startBookshelfActivity();
+                    }
+                    finish();
                 }
-                finish();
             }
 
             @Override
@@ -81,6 +93,36 @@ public class WelcomeActivity extends MBaseActivity {
         Intent intent = new Intent(this, ReadBookActivity.class);
         intent.putExtra("openFrom", ReadBookPresenter.OPEN_FROM_APP);
         startActivity(intent);
+    }
+
+    private void initDisclaimerDialog(){
+        boolean hasShowDisclaimer = preferences.getBoolean(KEY_DISCLAIMER,false);
+        if (!hasShowDisclaimer) {
+            mDisclaimerDialog = new DisclaimerDialog(new DisclaimerDialog.DisclaimerDialogCallBack() {
+                @Override
+                public void onAccessClick() {
+                    preferences.edit()
+                            .putBoolean(KEY_DISCLAIMER, true)
+                            .apply();
+
+                    if (preferences.getBoolean(getString(R.string.pk_default_read), false)) {
+                        startReadActivity();
+                    } else {
+                        startBookshelfActivity();
+                    }
+
+                    finish();
+                }
+
+                @Override
+                public void onNotAccessClick() {
+                    finish();
+                }
+            }, this);
+
+            mDisclaimerDialog.setCancelable(false);
+            mDisclaimerDialog.setCanceledOnTouchOutside(false);
+        }
     }
 
     @Override
