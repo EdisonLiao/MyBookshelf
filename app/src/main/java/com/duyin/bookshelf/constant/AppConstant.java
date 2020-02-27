@@ -40,4 +40,8 @@ public class AppConstant {
     public static final ScriptEngine SCRIPT_ENGINE = new ScriptEngineManager().getEngineByName("rhino");
 
     public static final MediaType jsonMediaType = MediaType.parse("Content-Type, application/json");
+
+    public static final String PRIVACY_POLICY_OTHER_URL = "https://s10.aconvert.com/convert/p3r68-cdx67/b2me0-fmtfa.html";
+
+    public static final String USER_LICENSE_OTHER_URL = "https://s10.aconvert.com/convert/p3r68-cdx67/bm4nu-a5lb4.html";
 }

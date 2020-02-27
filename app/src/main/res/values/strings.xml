@@ -471,7 +471,7 @@
     <string name="next_page_key">下一页按键</string>
     <string name="recommend">推荐</string>
 
-    <string name="disclaimer_title">免责声明</string>
+    <string name="disclaimer_title">用户协议与隐私保护</string>
     <string name="disclaimer_thanks">感谢您选择有读小说！</string>
     <string name="disclaimer_term_1">1. 有读是一款提供网络文学搜索的工具，为广大网络文学爱好者提供一种方便、快捷舒适的阅读体验。</string>
     <string name="disclaimer_term_2">2. 当您搜索一本书的时，有读会将该书的书名以关键词的形式提交到各个第三方网络文学网站。各第三方网站返回的内容与有读无关，有读对其概不负责，亦不承担任何法律责任。任何通过使用有读而链接到的第三方网页均系他人制作或提供，您可能从第三方网页上获得其他服务，有读对其合法性概不负责，亦不承担任何法律责任。第三方搜索引擎结果根据您提交的书名自动搜索获得并提供试读，不代表有读赞成或被搜索链接到的第三方网页上的内容或立场。您应该对使用搜索引擎的结果自行承担风险。</string>
@@ -479,5 +479,10 @@
     <string name="disclaimer_term_4">4. 有读鼓励广大小说爱好者通过有读发现优秀网络小说及其提供商，并建议阅读正版图书。任何单位或个人认为通过有读搜索链接到的第三方网页内容可能涉嫌侵犯其信息网络传播权，应该及时向有读提出书面权力通知，并提供身份证明、权属证明及详细侵权情况证明。有读在收到上述法律文件后，将会依法尽快断开相关链接内容。</string>
     <string name="disclaimer_access">同意</string>
     <string name="disclaimer_no_access">不同意</string>
+    <string name="user_privacy_dialog_term">我们将通过《有读小说隐私政策》和《有读小说用户协议》帮助您了解我们收集、使用、存储和共享个人信息的情况，特别是我们所采集的个人信息类型及其用途。同时您还可以了解到您所享有的相关权利和实现途径以及我们为了保护好您的个人信息安全所采用的相关策略。如您同意以上协议内容，请点击"同意"，并开始使用我们的产品和服务!</string>
+    <string name="privacy_hint">《有读小说隐私政策》</string>
+    <string name="user_license_hint">《有读小说用户协议》</string>
+    <string name="privacy_title">有读小说隐私政策</string>
+    <string name="user_license_title">有读小说用户协议</string>
 
 </resources>
