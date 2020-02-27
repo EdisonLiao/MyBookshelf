@@ -493,6 +493,11 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
     }
 
     @Override
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         BackupRestoreUi.INSTANCE.onActivityResult(requestCode, resultCode, data);
