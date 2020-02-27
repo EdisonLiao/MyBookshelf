@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -75,11 +76,13 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
     private String[] mTitles;
 
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    LinearLayout toolbar;
     @BindView(R.id.main_view)
     CoordinatorLayout mainView;
     @BindView(R.id.card_search)
-    CardView cardSearch;
+    TextView cardSearch;
+    @BindView(R.id.iv_setting)
+    ImageView ivSetting;
 
     private int group;
     private MoDialogHUD moDialogHUD;
@@ -197,8 +200,6 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
     @Override
     protected void bindView() {
         super.bindView();
-        setSupportActionBar(toolbar);
-        cardSearch.setCardBackgroundColor(ThemeStore.primaryColorDark(this));
         initTabLayout();
         upGroup(group);
         moDialogHUD = new MoDialogHUD(this);
@@ -209,6 +210,11 @@ public class MainActivity extends BaseTabActivity<MainContract.Presenter> implem
         //点击跳转搜索页
         cardSearch.setOnClickListener(view -> startActivityByAnim(new Intent(this, SearchBookActivity.class),
                 toolbar, "sharedView", android.R.anim.fade_in, android.R.anim.fade_out));
+
+        ivSetting.setOnClickListener(v -> {
+            Intent intent = new Intent(this,MySettingActivity.class);
+            startActivity(intent);
+        });
     }
 
     //初始化TabLayout和ViewPager

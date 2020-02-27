@@ -44,7 +44,6 @@ public class WelcomeActivity extends MBaseActivity {
         AsyncTask.execute(DbHelper::getDaoSession);
         ButterKnife.bind(this);
         initDisclaimerDialog();
-        ivBg.setColorFilter(ThemeStore.accentColor(this));
         ValueAnimator welAnimator = ValueAnimator.ofFloat(1f, 0f).setDuration(800);
         welAnimator.setStartDelay(500);
         welAnimator.addUpdateListener(animation -> {

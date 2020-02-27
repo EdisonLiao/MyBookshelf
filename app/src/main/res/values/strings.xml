@@ -484,5 +484,7 @@
     <string name="user_license_hint">《有读小说用户协议》</string>
     <string name="privacy_title">有读小说隐私政策</string>
     <string name="user_license_title">有读小说用户协议</string>
+    <string name="setting_privacy">隐私政策</string>
+    <string name="setting_license">用户协议</string>
 
 </resources>
