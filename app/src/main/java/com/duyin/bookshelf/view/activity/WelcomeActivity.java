@@ -129,4 +129,8 @@ public class WelcomeActivity extends MBaseActivity {
 
     }
 
+    @Override
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
 }
